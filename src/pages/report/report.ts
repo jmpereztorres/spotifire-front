@@ -24,6 +24,7 @@ export class ReportPage {
   latitude: any;
   longitude: any;
   reportId: any;
+  descriptionValue: any;
 
   constructor(public navCtrl: NavController, 
     private camera: Camera, 
@@ -68,6 +69,39 @@ export class ReportPage {
      }, (err) => {
       alert('Error while uploading the image to the server');
      });
+  }
+
+  reportFire(){
+
+    this.geolocation.getCurrentPosition().then((position) => {
+
+      this.latitude = position.coords.latitude;
+      this.longitude = position.coords.longitude;
+
+      var report = {
+        latitude: this.latitude,
+        longitude: this.longitude,
+        user: '',
+        imageId: this.reportId,
+        description: this.descriptionValue,
+        type: 'FIRE'
+      };
+  
+      this.userService.reportFire(JSON.stringify(report))
+      .subscribe(
+        (data) => { // Success
+          alert('Report generated succesfully!');
+        },
+        (error) =>{
+          alert('Error: '+JSON.stringify(error));
+          console.error(error);
+        }
+      )
+
+    }).catch(error => {
+      alert('Error obtaining location');
+      console.log(error);
+    });
   }
 
 }

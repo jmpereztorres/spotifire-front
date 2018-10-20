@@ -23,7 +23,7 @@
     <ion-row>
       <ion-col col-12>
         <ion-label>Explanation of the report: </ion-label>
-        <ion-textarea class="description_textarea_css" name="report_description"></ion-textarea>
+        <ion-textarea [(ngModel)]="descriptionValue" class="description_textarea_css" name="report_description"></ion-textarea>
       </ion-col>
     </ion-row>
 
@@ -45,7 +45,7 @@
       <ion-row>
         <ion-col></ion-col>
         <ion-col style="text-align: center">
-          <button ion-button large color="danger">
+          <button ion-button large color="danger" (click)="reportFire()">
             <ion-icon name='flame' item-start></ion-icon> Report Fire
           </button></ion-col>
         <ion-col></ion-col>
