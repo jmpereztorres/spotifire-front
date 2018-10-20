@@ -10,10 +10,78 @@
 
 <ion-content padding>
 
-  tabla avisos
-  
-  <div id="map_canvas">
+  <ion-grid>
+    <ion-row><ion-card>
+    
+      <ion-card-header>
+        <ion-toolbar color="primary">
+          <ion-title>Alerts near you</ion-title>
+        </ion-toolbar>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-icon name='flame' item-start></ion-icon>
+            Fire Detected
+            <ion-note item-end>
+              (4 Km)
+            </ion-note>
+          </ion-item>
 
-  </div>
+          <ion-item>
+            <ion-icon name='alert' item-start></ion-icon>
+            Fire Alert
+            <ion-note item-end>
+              (13 Km)
+            </ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-icon name='flame' item-start></ion-icon>
+            Fire Detected
+            <ion-note item-end>
+              (24 Km)
+            </ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-icon name='flame' item-start></ion-icon>
+            Fire Detected
+            <ion-note item-end>
+              (26 Km)
+            </ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-icon name='alert' item-start></ion-icon>
+            Fire Alert
+            <ion-note item-end>
+              (49 Km)
+            </ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-icon name='flame' item-start></ion-icon>
+            Fire Detected
+            <ion-note item-end>
+              (52 Km)
+            </ion-note>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    
+    </ion-card></ion-row>
+    <ion-row>
+    </ion-row>
+  </ion-grid>
+  
+ 
+
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col style="text-align: center"><button ion-button large color="danger"><ion-icon name='flame' item-start></ion-icon> Report Fire</button></ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>
 
 </ion-content>

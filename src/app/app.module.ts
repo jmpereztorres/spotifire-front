@@ -4,7 +4,11 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { PreventPage } from '../pages/prevent/prevent';
+import { RecoverPage } from '../pages/recover/recover';
+import { ReportPage } from '../pages/report/report';
+import { MapPage } from '../pages/map/map';
+import { HelpPage } from '../pages/help/help';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -16,7 +20,11 @@ import { GoogleMaps } from '@ionic-native/google-maps';
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    RecoverPage,
+    PreventPage,
+    ReportPage,
+    MapPage,
+    HelpPage  
   ],
   imports: [
     BrowserModule,
@@ -26,7 +34,11 @@ import { GoogleMaps } from '@ionic-native/google-maps';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    RecoverPage,
+    PreventPage,
+    ReportPage,
+    MapPage,
+    HelpPage
   ],
   providers: [
     StatusBar,
