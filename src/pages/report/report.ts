@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { UserService } from '../../providers/user-service';
+import { Geolocation } from '@ionic-native/geolocation';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 
 /**
  * Generated class for the ReportPage page.
@@ -15,11 +20,54 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ReportPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  imageData: any;
+  latitude: any;
+  longitude: any;
+  reportId: any;
+
+  constructor(public navCtrl: NavController, 
+    private camera: Camera, 
+    private geolocation: Geolocation, 
+    public userService: UserService, 
+    private transfer: FileTransfer, 
+    private file: File) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ReportPage');
+  }
+
+  openCamera() {
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+
+    const fileTransfer: FileTransferObject = this.transfer.create();
+
+    let imageOptions: FileUploadOptions = {
+      fileKey: 'file',
+      fileName: 'name.jpg',
+      headers: {
+        httpMethod: 'POST'
+      }
+   }
+
+    this.camera.getPicture(options).then((imageData) => {
+      this.imageData = imageData;
+      
+      fileTransfer.upload(this.imageData, 'http://192.168.171.47:8080/api/reports/upload', imageOptions)
+      .then((data) => {
+        alert('Image uploaded to the server');
+        this.reportId = data.response;
+      }, (err) => {
+        alert(JSON.stringify(err));
+      })
+     }, (err) => {
+      alert('Error while uploading the image to the server');
+     });
   }
 
 }

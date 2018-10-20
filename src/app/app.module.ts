@@ -14,7 +14,14 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { GoogleMaps } from '@ionic-native/google-maps';   
+import { Geolocation } from '@ionic-native/geolocation';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+import { Camera } from '@ionic-native/camera';
+import { HttpClientModule } from '@angular/common/http';
 
+import { UserService } from '../providers/user-service';
+import { LocationProvider } from '../providers/location';
 
 @NgModule({
   declarations: [
@@ -28,6 +35,7 @@ import { GoogleMaps } from '@ionic-native/google-maps';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -44,7 +52,14 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     StatusBar,
     SplashScreen,
     GoogleMaps,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Geolocation,
+    FileTransfer,
+    FileTransferObject,
+    File,
+    Camera,
+    UserService,
+    LocationProvider
   ]
 })
 export class AppModule {}
