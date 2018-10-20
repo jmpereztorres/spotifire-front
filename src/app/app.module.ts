@@ -14,6 +14,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
+import { UserService } from '../providers/user-service';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 
 
 @NgModule({
@@ -40,7 +43,11 @@ import { Geolocation } from '@ionic-native/geolocation';
     Geolocation,
     LocationProvider, 
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Camera
+    Camera,
+    UserService,
+    File,
+    FileTransfer,
+    FileTransferObject
   ]
 })
 export class AppModule {}
