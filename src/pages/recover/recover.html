@@ -16,5 +16,40 @@
 
 
 <ion-content padding>
+<ion-card>
+  <ion-card-header>
+    <b>Tree reforestation (Valencia, Spain)</b>
+  </ion-card-header>
+  <ion-card-content>
+    Activity organized by volunteers and supported by the city council, 30 hectares with pine trees will be reforested
+    <button ion-button block>JOIN !</button>
+  </ion-card-content>
 
+
+</ion-card>
+<ion-card>
+  <ion-card-header>
+    <b>Forest cleaning (Teruel, Spain)</b>
+  </ion-card-header>
+  <ion-card-content>
+  Forest rangers and hundreds of volunteers will clean the firewalls of the local mountains
+    <button ion-button block>JOIN !</button>
+
+  </ion-card-content>
+
+</ion-card>
+
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col col></ion-col>
+      <ion-col>
+        <button ion-button large color="secondary" (click)="reportFire()">
+          <ion-icon class="flame-icon" name='load' item-start></ion-icon> Load more activities
+        </button>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>
 </ion-content>

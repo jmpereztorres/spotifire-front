@@ -14,7 +14,43 @@
   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
 
+
+
+  <ion-grid>
+
+    <ion-row>
+      <ion-col col-9>
+        If you detect any residue, garbage, or other reasons that may cause a fire, please report it in this section.
+      </ion-col>
+      <ion-col col-3>
+        <button ion-button large color="secondary" (click)="openCamera()">
+          <ion-icon name='camera' item-start></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-12>
+        <ion-label>Explanation of the evidence: </ion-label>
+        <ion-textarea [(ngModel)]="descriptionValue" class="description_textarea_css" name="report_description"></ion-textarea>
+      </ion-col>
+    </ion-row>
+    Include a photo and a brief explanation of the issue.
+  </ion-grid>
+
+
+  <ion-footer>
+    <ion-grid>
+      <ion-row>
+        <ion-col></ion-col>
+        <ion-col style="text-align: center">
+          <button ion-button large color="secondary" (click)="reportFire()">
+            <ion-icon class="flame-icon" name='compass' item-start></ion-icon> Report Evidence
+          </button></ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-footer>
 </ion-content>

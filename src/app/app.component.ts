@@ -29,8 +29,7 @@ export class MyApp {
       { title: 'Prevent', component: PreventPage },
       { title: 'Report', component: ReportPage },
       { title: 'Map', component: MapPage },
-      { title: 'Recover', component: RecoverPage },
-      { title: 'Help', component: HelpPage }
+      { title: 'Recover', component: RecoverPage }
     ];
 
   }

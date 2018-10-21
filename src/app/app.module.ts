@@ -8,7 +8,6 @@ import { PreventPage } from '../pages/prevent/prevent';
 import { RecoverPage } from '../pages/recover/recover';
 import { ReportPage } from '../pages/report/report';
 import { MapPage } from '../pages/map/map';
-import { HelpPage } from '../pages/help/help';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -30,8 +29,7 @@ import { LocationProvider } from '../providers/location';
     RecoverPage,
     PreventPage,
     ReportPage,
-    MapPage,
-    HelpPage  
+    MapPage
   ],
   imports: [
     BrowserModule,
@@ -45,8 +43,7 @@ import { LocationProvider } from '../providers/location';
     RecoverPage,
     PreventPage,
     ReportPage,
-    MapPage,
-    HelpPage
+    MapPage
   ],
   providers: [
     StatusBar,
