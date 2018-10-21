@@ -42,8 +42,22 @@ export class HomePage {
       this.userService.retrieveEvidences(JSON.stringify(userLocation))
       .subscribe(
         (data) => { // Success
-          console.log("data--->"+data);
-          alert('Report generated succesfully!');
+          let response: any = data;
+          let evidences: any = response.evidences;
+          let alerts: any = response.alerts;          
+          let sliceEvidences: any = evidences.slice(0, 5);
+          let sliceAlerts: any =alerts.slice(0, 5);
+
+          let notices: any = [...sliceEvidences,...sliceAlerts];
+
+
+          notices.sort((a, b) => a[0].distance.localeCompare(b[0].distance))
+          for(var i = 0; i< notices.length(); i++){
+            console.log(notices[i].distance);
+          }
+          
+
+
         },
         (error) => {
           alert('Error: ' + JSON.stringify(error));
