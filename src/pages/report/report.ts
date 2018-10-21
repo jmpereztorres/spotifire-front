@@ -70,7 +70,7 @@ export class ReportPage {
       // Present loader
       loader.present().then(() => {
 
-        fileTransfer.upload(this.imageData, 'http://192.168.171.47:8080/api/reports/upload', imageOptions)
+        fileTransfer.upload(this.imageData, 'http://192.168.171.196:8080/api/reports/upload', imageOptions)
         .then((data) => {
             this.imageUploaded = true;
             //alert('Image uploaded to the server');
