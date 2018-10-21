@@ -39,21 +39,21 @@ export class HomePage {
         type: 'FIRE'
       }
 
-      this.userService.retrieveEvidences(JSON.stringify(userLocation))
+      this.userService.retrieveEvidencesTyped(JSON.stringify(userLocation))
       .subscribe(
         (data) => { // Success
           let response: any = data;
-          let evidences: any = response.evidences;
-          let alerts: any = response.alerts;          
-          let sliceEvidences: any = evidences.slice(0, 5);
-          let sliceAlerts: any =alerts.slice(0, 5);
+          let evidencesTyped: any = response.evidences;
+          // let alerts: any = response.alerts;          
+          // let sliceEvidences: any = evidences.slice(0, 5);
+          // let sliceAlerts: any =alerts.slice(0, 5);
 
-          let notices: any = [...sliceEvidences,...sliceAlerts];
+          // let notices: any = [...sliceEvidences,...sliceAlerts];
 
 
-          notices.sort((a, b) => a[0].distance.localeCompare(b[0].distance))
-          for(var i = 0; i< notices.length(); i++){
-            console.log(notices[i].distance);
+          // notices.sort((a, b) => a[0].distance.localeCompare(b[0].distance))
+          for (var i = 0; i < evidencesTyped.length(); i++){
+            alert("distance"+evidencesTyped[i].distance+"type"+evidencesTyped[i].level);
           }
           
 

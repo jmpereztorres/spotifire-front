@@ -18,4 +18,7 @@ export class UserService {
   retrieveEvidences(body: any){
     return this.http.post('http://192.168.171.196:8080/api/fires', body, {headers: { 'Content-Type': 'application/json'}});
   }
+  retrieveEvidencesTyped(body: any){
+    return this.http.post('http://192.168.171.196:8080/api/fires/typed', body, {headers: { 'Content-Type': 'application/json'}});
+  }
 }
