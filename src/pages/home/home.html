@@ -21,48 +21,21 @@
     
       <ion-card-content>
         <ion-list>
-          <ion-item>
-            <ion-icon name='flame' item-start></ion-icon>
-            Fire Detected
-            <ion-note item-end>
-              (4 Km)
-            </ion-note>
-          </ion-item>
-
-          <ion-item>
-            <ion-icon name='alert' item-start></ion-icon>
-            Fire Alert
-            <ion-note item-end>
-              (13 Km)
-            </ion-note>
-          </ion-item>
-          <ion-item>
-            <ion-icon name='flame' item-start></ion-icon>
-            Fire Detected
-            <ion-note item-end>
-              (24 Km)
-            </ion-note>
-          </ion-item>
-          <ion-item>
-            <ion-icon name='flame' item-start></ion-icon>
-            Fire Detected
-            <ion-note item-end>
-              (26 Km)
-            </ion-note>
-          </ion-item>
-          <ion-item>
-            <ion-icon name='alert' item-start></ion-icon>
-            Fire Alert
-            <ion-note item-end>
-              (49 Km)
-            </ion-note>
-          </ion-item>
-          <ion-item>
-            <ion-icon name='flame' item-start></ion-icon>
-            Fire Detected
-            <ion-note item-end>
-              (52 Km)
-            </ion-note>
+          <ion-item *ngFor="let evidence of evidencesTyped">
+            <div *ngIf="evidence.level == 'FIRE'">
+              <ion-icon  name='flame' item-start></ion-icon>
+              Fire Detected
+              <ion-note item-end>
+                {{evidence.distance}} km
+              </ion-note>
+            </div>
+            <div *ngIf="evidence.level == 'ALERT'">
+              <ion-icon  name='alert' item-start></ion-icon>
+              Fire Alert
+              <ion-note item-end>
+                {{evidence.distance}} km
+              </ion-note>
+            </div>
           </ion-item>
         </ion-list>
       </ion-card-content>
@@ -72,16 +45,14 @@
     </ion-row>
   </ion-grid>
   
- 
+</ion-content>
 
 <ion-footer>
-  <ion-grid>
-    <ion-row>
-      <ion-col></ion-col>
-      <ion-col style="text-align: center"><button ion-button large color="danger" (click)="toReport()"><ion-icon class="flame-icon" name='flame' item-start></ion-icon> Report Fire</button></ion-col>
-      <ion-col></ion-col>
-    </ion-row>
-  </ion-grid>
-</ion-footer>
-
-</ion-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col></ion-col>
+        <ion-col style="text-align: center"><button ion-button large color="danger" (click)="toReport()"><ion-icon class="flame-icon" name='flame' item-start></ion-icon> Report Fire</button></ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-footer>

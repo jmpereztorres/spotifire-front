@@ -13,7 +13,7 @@ export class UserService {
   // }
 
   reportFire(body: any){
-    return this.http.post('http://192.168.171.47:8080/api/reports', body, {headers: { 'Content-Type': 'application/json'}});
+    return this.http.post('http://192.168.171.196:8080/api/reports', body, {headers: { 'Content-Type': 'application/json'}});
   }
   retrieveEvidences(body: any){
     return this.http.post('http://192.168.171.196:8080/api/fires', body, {headers: { 'Content-Type': 'application/json'}});
