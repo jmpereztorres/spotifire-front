@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { NavController } from "ionic-angular";
 import { Geolocation } from '@ionic-native/geolocation';
 import { UserService } from '../../providers/user-service';
+import { ReportPage } from "../../pages/report/report";
 
 @Component({
   selector: "page-home",
@@ -18,6 +19,10 @@ export class HomePage {
     public userService: UserService
   ) { }
 
+  ionViewDidLoad() {
+    this.getEvidencesList();
+  }
+
   getEvidencesList(){
 
     this.geolocation.getCurrentPosition().then((position) => {
@@ -31,7 +36,7 @@ export class HomePage {
         user: '',
         imageId: '',
         description: '',
-        type: ''
+        type: 'FIRE'
       }
 
       this.userService.retrieveEvidences(JSON.stringify(userLocation))
@@ -49,6 +54,10 @@ export class HomePage {
       alert('Error obtaining location');
       console.log(error);
     });
+  }
+
+  toReport(){
+    this.navCtrl.push(ReportPage);
   }
 
 }

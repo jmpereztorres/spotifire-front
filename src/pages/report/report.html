@@ -20,6 +20,18 @@
 
 
   <ion-grid>
+    
+    <ion-row>      
+        <ion-col col-9>
+          Please, submit a picture of the wildfire.
+        </ion-col>
+        <ion-col col-3>
+          <button ion-button large color="danger" (click)="openCamera()">
+            <ion-icon name='camera' item-start></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+        
     <ion-row>
       <ion-col col-12>
         <ion-label>Explanation of the report: </ion-label>
@@ -27,16 +39,6 @@
       </ion-col>
     </ion-row>
 
-    <ion-row>      
-      <ion-col col-9>
-        Please, submit a picture of the wildfire.
-      </ion-col>
-      <ion-col col-3>
-        <button ion-button large color="danger" (click)="openCamera()">
-          <ion-icon name='camera' item-start></ion-icon>
-        </button>
-      </ion-col>
-    </ion-row>
   </ion-grid>
 
 
