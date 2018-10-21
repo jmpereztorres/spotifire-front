@@ -4,6 +4,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 import { UserService } from '../../providers/user-service';
 import { Geolocation } from '@ionic-native/geolocation';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { LoadingController } from 'ionic-angular';
 import { File } from '@ionic-native/file';
 
 /**
@@ -25,16 +26,19 @@ export class ReportPage {
   longitude: any;
   reportId: any;
   descriptionValue: any;
+  imageUploaded: boolean;
 
   constructor(public navCtrl: NavController, 
     private camera: Camera, 
     private geolocation: Geolocation, 
     public userService: UserService, 
-    private transfer: FileTransfer, 
+    private transfer: FileTransfer,
+    private loading: LoadingController, 
     private file: File) {
   }
 
   ionViewDidLoad() {
+    this.imageUploaded = false;
     console.log('ionViewDidLoad ReportPage');
   }
 
@@ -59,48 +63,75 @@ export class ReportPage {
     this.camera.getPicture(options).then((imageData) => {
       this.imageData = imageData;
       
-      fileTransfer.upload(this.imageData, 'http://192.168.171.47:8080/api/reports/upload', imageOptions)
-      .then((data) => {
-        alert('Image uploaded to the server');
-        this.reportId = data.response;
-      }, (err) => {
-        alert(JSON.stringify(err));
-      })
-     }, (err) => {
-      alert('Error while uploading the image to the server');
-     });
+      let loader = this.loading.create({
+        content: 'Uploading image...',
+      });
+  
+      // Present loader
+      loader.present().then(() => {
+
+        fileTransfer.upload(this.imageData, 'http://192.168.171.196:8080/api/reports/upload', imageOptions)
+        .then((data) => {
+            this.imageUploaded = true;
+            //alert('Image uploaded to the server');
+            //Hide loader
+            loader.dismiss();
+            this.reportId = data.response;
+          }, (err) => {
+            //Hide loader
+            loader.dismiss();
+            alert(JSON.stringify(err));
+          })
+        }, (err) => {
+          alert('Error while uploading the image to the server');
+        });
+    });
   }
 
   reportFire(){
+    let loader = this.loading.create({
+      content: 'Sending report...',
+    });
 
-    this.geolocation.getCurrentPosition().then((position) => {
+    // Present loader
+    loader.present().then(() => {
 
-      this.latitude = position.coords.latitude;
-      this.longitude = position.coords.longitude;
+      this.geolocation.getCurrentPosition().then((position) => {
 
-      var report = {
-        latitude: this.latitude,
-        longitude: this.longitude,
-        user: '',
-        imageId: this.reportId,
-        description: this.descriptionValue,
-        type: 'FIRE'
-      };
-  
-      this.userService.reportFire(JSON.stringify(report))
-      .subscribe(
-        (data) => { // Success
-          alert('Report generated succesfully!');
-        },
-        (error) =>{
-          alert('Error: '+JSON.stringify(error));
-          console.error(error);
-        }
-      )
+        this.latitude = position.coords.latitude;
+        this.longitude = position.coords.longitude;
 
-    }).catch(error => {
-      alert('Error obtaining location');
-      console.log(error);
+        var report = {
+          latitude: this.latitude,
+          longitude: this.longitude,
+          user: '',
+          imageId: this.reportId,
+          description: this.descriptionValue,
+          type: 'FIRE'
+        };
+        
+    
+        this.userService.reportFire(JSON.stringify(report))
+        .subscribe(
+          (data) => { // Success
+            //Hide loader
+            loader.dismiss();
+            this.imageUploaded = false;
+            alert('Report generated succesfully!');
+          },
+          (error) =>{
+            //Hide loader
+            loader.dismiss();
+            alert('Error: '+JSON.stringify(error));
+            console.error(error);
+          }
+        )
+
+      }).catch(error => {
+        alert('Error obtaining location');
+        console.log(error);
+      });
+
     });
   }
 

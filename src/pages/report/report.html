@@ -17,8 +17,6 @@
 
 <ion-content padding>
 
-
-
   <ion-grid>
     
     <ion-row>      
@@ -30,7 +28,15 @@
             <ion-icon name='camera' item-start></ion-icon>
           </button>
         </ion-col>
+    </ion-row>
+
+    <div *ngIf="imageUploaded">
+      <ion-row>
+        <ion-item>
+          <ion-label>Image uploaded successfully</ion-label>
+        </ion-item>
       </ion-row>
+    </div>
         
     <ion-row>
       <ion-col col-12>
@@ -41,8 +47,9 @@
 
   </ion-grid>
 
+</ion-content>
 
-  <ion-footer>
+<ion-footer>
     <ion-grid>
       <ion-row>
         <ion-col></ion-col>
@@ -54,4 +61,3 @@
       </ion-row>
     </ion-grid>
   </ion-footer>
-</ion-content>
